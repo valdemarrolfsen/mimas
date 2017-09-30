@@ -40,10 +40,18 @@
 
   // Custom style from _variables file
   border-radius: $btn-border-radius;
+  font-weight: $btn-font-weight;
+  letter-spacing: $btn-letter-spacing;
+  text-shadow: $btn-text-shadow;
 
   // Extensions
   @extend %default-button;
   @extend %all-trans;
+
+  &.round {
+    //Rounded style
+    border-radius: 1337px;
+  }
 }
 
 // Button sizes
@@ -62,14 +70,91 @@
   padding: $btn-lg-padding;
 }
 
+.btn-collection {
+
+  // Small hack to remove forced space between buttons in some browsers
+  font-size: 0;
+
+  .btn {
+
+    border-radius: 0;
+    margin-right: 0;
+    margin-left: 0;
+
+    // Restores the font-size after hack in parent class
+    font-size: $defaultTextSize;
+
+    &:first-child {
+
+      @media (min-width: $smallMediaSize) { 
+        border-top-left-radius: $btn-border-radius;
+        border-bottom-left-radius: $btn-border-radius;
+
+        &.round {
+          border-top-left-radius: 1337px;
+          border-bottom-left-radius: 1337px;
+        }
+      }
+
+      @media (max-width: $smallMediaSize) {
+        border-top-left-radius: $btn-border-radius;
+        border-top-right-radius: $btn-border-radius;
+
+        &.round {
+          border-top-left-radius: 1337px;
+          border-top-right-radius: 1337px;
+        }
+      }
+    }
+
+    &:last-child {
+
+      @media (min-width: $smallMediaSize) { 
+        border-top-right-radius: $btn-border-radius;
+        border-bottom-right-radius: $btn-border-radius;
+
+        &.round {
+          border-top-right-radius: 1337px;
+          border-bottom-right-radius: 1337px;
+        }
+      }
+
+      @media (max-width: $smallMediaSize) {
+        border-bottom-left-radius: $btn-border-radius;
+        border-bottom-right-radius: $btn-border-radius;
+
+        &.round {
+          border-bottom-left-radius: 1337px;
+          border-bottom-right-radius: 1337px;
+        }
+      }
+    }
+
+    &:not(:last-child) {
+      &.border {
+
+        @media (min-width: $smallMediaSize) { 
+          border-right: 0;
+        }
+
+        @media (max-width: $smallMediaSize) { 
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
 @each $item in $mainColors {
 
-  // Simple buttons
-  .btn.#{nth($item, 1)} {
+  $name: nth($item, 1);
+  $bg: nth($item, 2);
+  $color: nth($item, 3);
+  $hover: nth($item, 4);
+  $border-text-color: nth($item, 5);
 
-    // Local variables
-    $bg: nth($item, 2);
-    $color: nth($item, 3);
+  // Simple buttons
+  .btn.#{$name} {
 
     //Custom style
     background: $bg;
@@ -82,18 +167,17 @@
   }
 
   // Border buttons
-  .btn.border.#{nth($item, 1)} {
+  .btn.border.#{$name} {
 
     // Local variables
-    $border: nth($item, 2);
-    $color: nth($item, 3);
+    $border: $bg;
 
     // Static style
     background: none;
 
     //Custom style
     border: 1px solid $border;
-    color: $dark;
+    color: $border-text-color;
 
     @include smoothHover($border, $color);
 
@@ -102,12 +186,6 @@
       border-color: darken($border, 5%);
     }
   }
-}
-
-// Rounded buttons
-.btn.round {
-  //Rounded style
-  border-radius: 1337px;
 }
 
 

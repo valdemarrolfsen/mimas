@@ -12,12 +12,10 @@
 // Layout
 // -----------------
 .row {
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -ms-flex-direction: row;
-  width: 100%;
+  
   // Extends
   @extend %is-flex;
+  @extend %flex-row;
 
 
   &.center {

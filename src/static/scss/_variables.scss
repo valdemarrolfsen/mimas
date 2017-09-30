@@ -12,7 +12,7 @@ $light: #fff !default;
 $stable-light: #ebebeb !default;
 $stable: #d7d9da !default;
 $stable-dark: #898b8f !default;
-$primary: #ff5573 !default;
+$primary: #00897b !default;
 $action: #ffd37a !default;
 $warning: #ff9476 !default;
 $warning-light: #fed8c5 !default;
@@ -35,24 +35,25 @@ $defaultTextColor: #333;
 $defaultTextSize: 12px;
 
 // List of main colors
+// Setup: (name, main-color, complementary-color, hover-color, second-hover-color, btn-border-text-color)
 $mainColors: (
-    ('light', $light, $defaultTextColor, darken($light, 10%), darken($light, 20%)),
-    ('stable-light', $stable-light, $dark, darken($stable-light, 10%), darken($stable-light, 20%)),
-    ('stable', $stable, $dark, darken($stable, 10%), darken($stable, 20%)),
-    ('stable-dark', $stable-dark, $light, lighten($stable-dark, 10%), lighten($stable-dark, 20%)),
-    ('primary', $primary, $light, lighten($primary, 10%), lighten($primary, 20%)),
-    ('action', $action, $dark, lighten($action, 10%), lighten($action, 20%)),
-    ('warning', $warning, $light, lighten($warning, 10%), lighten($warning, 20%)),
-    ('green', $green, $light, lighten($green, 10%), lighten($green, 20%)),
-    ('blue', $blue, $light, lighten($blue, 10%), lighten($blue, 20%)),
-    ('pink', $pink, $light, lighten($pink, 10%), lighten($pink, 20%)),
-    ('accept', $accept, $light, lighten($accept, 10%), lighten($accept, 20%)),
-    ('decline', $decline, $light, lighten($decline, 10%), lighten($decline, 20%)),
-    ('dark', $dark, $light, lighten($dark, 10%), lighten($dark, 20%)),
-    ('black', $black, $light, lighten($black, 10%), lighten($black, 20%)),
-    ('gray', $gray, $defaultTextColor, darken($gray, 10%), darken($gray, 20%)),
-    ('light-gray', $light-gray, $defaultTextColor, darken($light-gray, 10%), darken($light-gray, 20%)),
-    ('mint', $mint, $black, lighten($mint, 10%), lighten($mint, 20%))
+    ('light', $light, $defaultTextColor, darken($light, 10%), $light),
+    ('stable-light', $stable-light, $dark, darken($stable-light, 10%), $dark),
+    ('stable', $stable, $dark, darken($stable, 10%), $dark),
+    ('stable-dark', $stable-dark, $light, lighten($stable-dark, 10%), $dark),
+    ('primary', $primary, $light, lighten($primary, 10%), $dark),
+    ('action', $action, $dark, lighten($action, 10%), $dark),
+    ('warning', $warning, $light, lighten($warning, 10%), $dark),
+    ('green', $green, $light, lighten($green, 10%), $dark),
+    ('blue', $blue, $light, lighten($blue, 10%), $dark),
+    ('pink', $pink, $light, lighten($pink, 10%), $dark),
+    ('accept', $accept, $light, lighten($accept, 10%), $dark),
+    ('decline', $decline, $light, lighten($decline, 10%), $dark),
+    ('dark', $dark, $light, lighten($dark, 10%), $dark),
+    ('black', $black, $light, lighten($black, 10%), $dark),
+    ('gray', $gray, $defaultTextColor, darken($gray, 10%), $dark),
+    ('light-gray', $light-gray, $defaultTextColor, darken($light-gray, 10%), $dark),
+    ('mint', $mint, $black, lighten($mint, 10%), $dark)
 );
 
 
@@ -62,22 +63,24 @@ $mainColors: (
 // Grid division
 $grid-division: 12;
 
-
 // Media sizes
 $smallMediaSize: 768px;
 $mediumMediaSize: 1250px;
 
-// Nav bar top
-$small-nav-size: 60px;
-$medium-nav-size: 80px;
-$large-nav-size: 120px;
 
+// Navbar
+$nav-height: 80px;
+$link-font-size: 1.1em;
+$link-font-weight: 600;
 
 // Buttons
 // -------------------
 
 // General
 $btn-border-radius: 3px;
+$btn-font-weight: 700;
+$btn-letter-spacing: 2px;
+$btn-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
 
 // Sizes
 $btn-sm-padding:              5px 20px;

@@ -1,6 +1,6 @@
 /*----------------------------------------
 
-  KORDE - PLACEHOLDERS
+  MIMAS - PLACEHOLDERS
 
 -----------------------------------------*/
 
@@ -51,6 +51,17 @@
   display: flex;
 }
 
+%flex-row {
+
+  // Flex direction
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -ms-flex-direction: row;
+
+  // Fill parent container
+  width: 100%;
+}
+
 // Cover
 // ---------------------
 %cover {
@@ -61,116 +72,6 @@
   z-index: 0;
   width: 100%;
   height: 100%;
-}
-
-// Navbar
-// ---------------------
-%nav-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1338;
-  padding: 10px 20px;
-
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  width: 100%;
-  // Extends
-  @extend %is-flex;
-
-  // Mixins
-  @include trans(background-color, 500ms);
-
-  ul {
-    overflow: auto;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    @extend %all-trans;
-    li {
-      padding: 5px 0;
-      float: left;
-      margin-right: 0px;
-      border-right-width: 1px;
-      border-right-style: solid;
-      border-right-color: #fff;
-      padding: 0 20px;
-
-      &:last-child {
-        border-right: none;
-      }
-
-      a {
-        text-decoration: none;
-
-        @extend %all-trans;
-      }
-    }
-
-    li.active a {
-      font-weight: bold;
-    }
-  }
-
-  .nav-logo {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    bottom: 10px;
-
-    cursor: pointer;
-
-    img {
-      height: 100%;
-    }
-  }
-
-  .list-container {
-    span {
-      display: none;
-    }
-  }
-
-  @media (max-width: $smallMediaSize) {
-
-    ul {
-      display: none;
-      opacity: 0;
-      position: absolute;
-      top: 50px; right: 0;
-      width: 100%;
-      background: $dark;
-
-      li {
-        float: none;
-        border: 0;
-        width: 100%;
-        padding: 15px 20px;
-      }
-    }
-
-    .nav-logo {
-      top: 5px;
-      bottom: 5px;
-    }
-
-    .list-container {
-      position: absolute;
-      top: 0;
-      right: 20px;
-
-      span {
-        display: block;
-        text-align: right;
-      }
-    }
-
-    ul.open {
-      display: block;
-      opacity: 1;
-    }
-  }
 }
 
 %nav-side {
