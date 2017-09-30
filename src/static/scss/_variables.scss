@@ -1,0 +1,96 @@
+/*----------------------------------------
+
+  KORDE - VARIABLES
+
+-----------------------------------------*/
+
+// Colors
+// -------------------
+
+// Main colors
+$light: #fff !default;
+$stable-light: #ebebeb !default;
+$stable: #d7d9da !default;
+$stable-dark: #898b8f !default;
+$primary: #ff5573 !default;
+$action: #ffd37a !default;
+$warning: #ff9476 !default;
+$warning-light: #fed8c5 !default;
+$green: #44c18b !default;
+$blue: #4c7c96 !default;
+$pink: #fc7fce !default;
+$decline: rgb(169, 45, 64) !default;
+$accept: #27ae60 !default;
+$dark: #3e2a4f !default;
+$black: #1a1a1a !default;
+$gray: #dddddd !default;
+$light-gray: #faf9fa !default;
+$mint: #d1ffed !default;
+
+// Text
+// -------------------
+$defaultFont: 'Raleway', sans-serif;
+$secondFont: 'Raleway', sans-serif;
+$defaultTextColor: #333;
+$defaultTextSize: 12px;
+
+// List of main colors
+$mainColors: (
+    ('light', $light, $defaultTextColor, darken($light, 10%), darken($light, 20%)),
+    ('stable-light', $stable-light, $dark, darken($stable-light, 10%), darken($stable-light, 20%)),
+    ('stable', $stable, $dark, darken($stable, 10%), darken($stable, 20%)),
+    ('stable-dark', $stable-dark, $light, lighten($stable-dark, 10%), lighten($stable-dark, 20%)),
+    ('primary', $primary, $light, lighten($primary, 10%), lighten($primary, 20%)),
+    ('action', $action, $dark, lighten($action, 10%), lighten($action, 20%)),
+    ('warning', $warning, $light, lighten($warning, 10%), lighten($warning, 20%)),
+    ('green', $green, $light, lighten($green, 10%), lighten($green, 20%)),
+    ('blue', $blue, $light, lighten($blue, 10%), lighten($blue, 20%)),
+    ('pink', $pink, $light, lighten($pink, 10%), lighten($pink, 20%)),
+    ('accept', $accept, $light, lighten($accept, 10%), lighten($accept, 20%)),
+    ('decline', $decline, $light, lighten($decline, 10%), lighten($decline, 20%)),
+    ('dark', $dark, $light, lighten($dark, 10%), lighten($dark, 20%)),
+    ('black', $black, $light, lighten($black, 10%), lighten($black, 20%)),
+    ('gray', $gray, $defaultTextColor, darken($gray, 10%), darken($gray, 20%)),
+    ('light-gray', $light-gray, $defaultTextColor, darken($light-gray, 10%), darken($light-gray, 20%)),
+    ('mint', $mint, $black, lighten($mint, 10%), lighten($mint, 20%))
+);
+
+
+// General options
+// -------------------
+
+// Grid division
+$grid-division: 12;
+
+
+// Media sizes
+$smallMediaSize: 768px;
+$mediumMediaSize: 1250px;
+
+// Nav bar top
+$small-nav-size: 60px;
+$medium-nav-size: 80px;
+$large-nav-size: 120px;
+
+
+// Buttons
+// -------------------
+
+// General
+$btn-border-radius: 3px;
+
+// Sizes
+$btn-sm-padding:              5px 20px;
+$btn-md-padding:              10px 24px;
+$btn-lg-padding:              15px 60px;
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,307 @@
+/*----------------------------------------
+
+  HEAD MARKET - NAV BARS
+
+-----------------------------------------*/
+
+//Imports
+
+
+// Nav bar top
+// -----------------
+.nav-sm {
+  @extend %nav-top;
+  height: $small-nav-size;
+
+  .list-container {
+    line-height: $small-nav-size/2;
+  }
+  @media (max-width: $smallMediaSize) {
+    height: $small-nav-size/2;
+    ul {
+      top: $small-nav-size/2;
+    }
+  }
+}
+
+.nav-md {
+  @extend %nav-top;
+  height: $medium-nav-size;
+
+  .list-container {
+    span {
+      line-height: $medium-nav-size/2;
+    }
+  }
+  @media (max-width: $smallMediaSize) {
+    height: $medium-nav-size/2;
+
+    ul {
+      top: $medium-nav-size/2;
+    }
+  }
+}
+
+.nav-lg {
+  @extend %nav-top;
+  height: $large-nav-size;
+
+  .list-container {
+    span {
+      line-height: $large-nav-size/2;
+    }
+  }
+  @media (max-width: $smallMediaSize) {
+    height: $large-nav-size/2;
+    ul {
+      top: $large-nav-size/2;
+    }
+  }
+}
+
+.has-nav-md {
+  padding-top: $medium-nav-size;
+
+  @media (max-width: $smallMediaSize) {
+    padding-top: $medium-nav-size/2;
+  }
+
+}
+
+.has-nav-lg {
+  padding-top: $large-nav-size;
+
+  @media (max-width: $smallMediaSize) {
+    padding-top: $large-nav-size/2;
+  }
+
+}
+
+.has-nav-sm {
+  padding-top: $small-nav-size;
+}
+
+.nav-with-side {
+  left: 70px;
+}
+
+.nav-fixed {
+  position: fixed;
+}
+
+.nav-center {
+  justify-content: center;
+}
+
+.nav-end {
+  justify-content: flex-end;
+}
+
+.nav-center-v {
+  align-items: center;
+}
+
+.nav-end-v {
+  align-items: flex-end;
+}
+
+.nav-transparent {
+  background: transparent;
+}
+
+// Nav bar side
+// -----------------
+
+.nav-side {
+  // Extends
+  @extend %nav-side;
+
+  // Includes
+  @include trans(all, 400ms);
+
+  .logo-container {
+    img {
+      width: 100%;
+    }
+  }
+
+  .nav-item {
+    position: relative;
+    font-size: 16px;
+    cursor: pointer;
+
+    font-family: $secondFont;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @include trans(background-color, 200ms);
+
+    span {
+      line-height: 60px;
+      opacity: 0.6;
+    }
+  }
+
+  .active {
+    span {
+      opacity: 1;
+    }
+  }
+}
+
+.nav-left { left: 0; }
+.nav-right { right: 0; }
+
+// Different colors
+@each $item in $mainColors {
+  $name: nth($item, 1);
+  $bg: nth($item, 2);
+  $color: nth($item, 3);
+  $hover: nth($item, 4);
+
+  .nav-#{$name} {
+    background: $bg;
+    color: $color;
+
+    a {
+      color: $color;
+    }
+
+    ul {
+      li {
+        border-right-color: $color;
+      }
+    }
+
+    .input-bottom-#{$name} {
+      color: $color;
+      &:focus {
+        border-bottom-color: $color;
+      }
+    }
+
+    @media (max-width: $smallMediaSize) {
+      ul {
+        border-top: 1px solid $hover;
+        background: $bg;
+      }
+    }
+  }
+
+  .nav-side-#{nth($item, 1)} {
+    background: $bg;
+    color: $color;
+
+    .nav-item {
+      &:hover {
+        background: $hover;
+      }
+    }
+  }
+}
+
+.nav-side-sm {
+  width: 70px;
+  padding-top: 15px;
+
+  span {
+    line-height: 60px;
+  }
+
+  .logo-container {
+    padding: 10px 15px;
+  }
+
+  .nav-item {
+    text-align: center;
+
+    .item-text {
+      display: none;
+    }
+  }
+
+  @media (max-width: $smallMediaSize) {
+    left: -70px;
+  }
+}
+
+.nav-side-md {
+  width: 200px;
+  padding-top: 10px;
+
+  span {
+    margin: 0 10px;
+    line-height: 50px;
+  }
+
+  .logo-container {
+    padding: 10px 40px;
+  }
+
+  .nav-item {
+    padding: 0 10px;
+  }
+
+  @media (max-width: $smallMediaSize) {
+    left: -200px;
+  }
+}
+
+.nav-side-lg {
+  width: 300px;
+  padding-top: 20px;
+
+  span {
+    margin: 0 10px;
+    line-height: 50px;
+  }
+
+  .logo-container {
+    padding: 0px 40px;
+    padding-bottom: 10px;
+  }
+
+  .nav-item {
+    padding: 0 20px;
+  }
+
+  @media (max-width: $smallMediaSize) {
+    left: -300px;
+  }
+}
+
+.has-nav-side-sm {
+  padding-left: 70px;
+}
+
+.has-nav-side-md {
+  padding-left: 200px;
+}
+
+.has-nav-side-lg {
+  padding-left: 300px;
+}
+
+.has-nav-side-sm, .has-nav-side-md, .has-nav-side-lg {
+  // Extends
+  @extend %all-trans;
+
+  @media (max-width: $smallMediaSize) {
+    padding-left: 0;
+  }
+}
+
+// Sub nav style
+// (moved here from about.style.scss, renamed from .sub-nav-about)
+.sub-nav {
+  width: 100%;
+  h3 {
+    display: inline;
+    vertical-align: middle
+  }
+  button {
+    margin: 0 10px 4px 0;
+  }
+}

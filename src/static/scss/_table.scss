@@ -1,0 +1,225 @@
+/*
+
+KORDE TABLE
+
+Created by Valdemar Rolfsen 2016
+
+*/
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      @include trans($time: 200ms);
+      > th,
+      > td {
+        text-align: left;
+        padding: 20px;
+        vertical-align: middle;
+        border-top: 0;
+        @include trans($time: 200ms);
+      }
+    }
+  }
+  > thead > tr > th {
+    font-weight: 400;
+    vertical-align: bottom;
+  }
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+    > tr:first-child {
+      > th,
+      > td {
+        border-top: 0;
+      }
+    }
+  }
+
+  // Nesting
+  .table {
+    background-color: white;
+  }
+
+  // Remove border
+  .no-border {
+    border: 0;
+  }
+}
+
+.table-md {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        padding: 10px;
+      }
+    }
+  }
+}
+
+.table-bordered {
+  border: 0;
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border: 0;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+      }
+    }
+  }
+
+  > tbody {
+    > tr:last-child {
+      > th,
+      > td {
+        border-bottom-width: 0;
+      }
+    }
+  }
+
+  > thead > tr {
+    > th,
+    > td {
+      border-bottom-width: 2px;
+    }
+  }
+}
+
+.table-responsive-vertical {
+  @media (max-width: $smallMediaSize) {
+
+    // Tighten up spacing
+    > .table {
+      margin-bottom: 0;
+      background-color: transparent;
+      > thead,
+      > tfoot {
+        display: none;
+      }
+
+      > tbody {
+        display: block;
+
+        > tr {
+          display: block;
+          border: 1px solid rgba(0, 0, 0, 0);
+          border-radius: 2px;
+          margin-bottom: 20px;
+
+          > td {
+            display: block;
+            vertical-align: middle;
+            text-align: right;
+            width: 100%;
+          }
+          > td[data-title]:before {
+            content: attr(data-title);
+            float: left;
+            font-size: inherit;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    // Special overrides for the bordered tables
+    > .table-bordered {
+      border: 0;
+
+      // Nuke the appropriate borders so that the parent can handle them
+      > tbody {
+        > tr {
+          > td:last-child {
+            border-bottom-width: 0px;
+          }
+        }
+      }
+    }
+
+    // Special overrides for the striped tables
+    > .table-striped {
+      > tbody > tr > td,
+      > tbody > tr:nth-child(odd) {
+        background-color: #fff;
+      }
+      > tbody > tr > td:nth-child(odd) {
+        background-color: #333;
+      }
+    }
+
+    // Special overrides for hover tables
+    > .table-hover {
+      > tbody {
+        > tr:hover > td,
+        > tr:hover {
+          background-color: #fff;
+        }
+        > tr > td:hover {
+          background-color: #eee;
+        }
+      }
+    }
+  }
+}
+
+@each $item in $mainColors {
+  $bg: nth($item, 2);
+  $color: nth($item, 3);
+  $hover: nth($item, 4);
+
+  .table-#{nth($item, 1)} {
+    background-color: $bg;
+    color: $color;
+
+    > thead > tr > th {
+      border-bottom: 1px solid $hover;
+    }
+    > tbody + tbody {
+      border-top: 1px solid $hover;
+    }
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th,
+        > td {
+          border-bottom-color: $hover;
+        }
+      }
+    }
+    > tbody > tr:hover {
+      > td,
+      > th {
+        background-color: $hover;
+      }
+    }
+  }
+
+  .table-responsive-vertical {
+    @media (max-width: $smallMediaSize) {
+      .table-#{nth($item, 1)} {
+        > tbody {
+          > tr {
+            > td {
+              background-color: $bg;
+
+            }
+            > td[data-title]:before {
+              color: $color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

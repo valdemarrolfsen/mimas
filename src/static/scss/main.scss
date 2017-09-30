@@ -1,0 +1,73 @@
+/*----------------------------------------
+
+  KORDE - MAIN
+
+-----------------------------------------*/
+
+@import "variables",
+        "mixins",
+        "placeholders",
+        "buttons",
+        "form",
+        "textstyles",
+        "properties",
+        "nav",
+        "grid",
+        "table",
+        "list";
+
+// General fixes
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  // Default text
+  font-family: $defaultFont;
+  font-size: $defaultTextSize;
+  color: $defaultTextColor;
+
+  @media (max-width: $smallMediaSize) {
+    font-size: $defaultTextSize * 0.7;
+  }
+}
+
+
+html {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+
+  text-rendering: optimizeLegibility !important;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004) !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+button {
+  font-size: inherit;
+  font-family: $secondFont;
+  &:focus {
+    outline: none;
+  }
+}
+
+label, a, table, input, select {
+  font-family: $secondFont
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:focus, &:active {
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

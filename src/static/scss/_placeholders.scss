@@ -1,0 +1,217 @@
+/*----------------------------------------
+
+  KORDE - PLACEHOLDERS
+
+-----------------------------------------*/
+
+// Buttons
+// --------------------
+
+// Borders
+// --------------------
+
+%solid-border {
+  border-style: solid;
+}
+
+%solid-bottom-border {
+  border-bottom-style: solid;
+}
+
+%solid-top-border {
+  border-top-style: solid;
+}
+
+%solid-right-border {
+  border-right-style: solid;
+}
+
+%solid-left-border {
+  border-left-style: solid;
+}
+
+// Transitions
+// --------------------
+
+%all-trans {
+  @include trans();
+}
+
+%background-trans {
+  @include trans(background-color, 200ms);
+}
+
+// Layout
+// --------------------
+%is-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+// Cover
+// ---------------------
+%cover {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// Navbar
+// ---------------------
+%nav-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1338;
+  padding: 10px 20px;
+
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  width: 100%;
+  // Extends
+  @extend %is-flex;
+
+  // Mixins
+  @include trans(background-color, 500ms);
+
+  ul {
+    overflow: auto;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    @extend %all-trans;
+    li {
+      padding: 5px 0;
+      float: left;
+      margin-right: 0px;
+      border-right-width: 1px;
+      border-right-style: solid;
+      border-right-color: #fff;
+      padding: 0 20px;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      a {
+        text-decoration: none;
+
+        @extend %all-trans;
+      }
+    }
+
+    li.active a {
+      font-weight: bold;
+    }
+  }
+
+  .nav-logo {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    bottom: 10px;
+
+    cursor: pointer;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .list-container {
+    span {
+      display: none;
+    }
+  }
+
+  @media (max-width: $smallMediaSize) {
+
+    ul {
+      display: none;
+      opacity: 0;
+      position: absolute;
+      top: 50px; right: 0;
+      width: 100%;
+      background: $dark;
+
+      li {
+        float: none;
+        border: 0;
+        width: 100%;
+        padding: 15px 20px;
+      }
+    }
+
+    .nav-logo {
+      top: 5px;
+      bottom: 5px;
+    }
+
+    .list-container {
+      position: absolute;
+      top: 0;
+      right: 20px;
+
+      span {
+        display: block;
+        text-align: right;
+      }
+    }
+
+    ul.open {
+      display: block;
+      opacity: 1;
+    }
+  }
+}
+
+%nav-side {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1337;
+}
+
+// Grid
+// ---------------------
+
+// Shapes
+// ---------------------
+
+%is-circle {
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+}
+
+// Divider
+// ---------------------
+%divider {
+  width: 100%;
+  height: 1px;
+  border-bottom-style: solid;
+}
+
+// Hover
+// ---------------------
+
+%hover {
+  cursor: pointer;
+  @include trans(background-color, 200ms);
+}
+
+// Forms
+// ---------------------
+%border-bottom-input {
+  background-color: transparent;
+
+  @include trans(border, 500ms);
+}

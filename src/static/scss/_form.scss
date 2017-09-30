@@ -1,0 +1,291 @@
+/*----------------------------------------
+
+  KORDE - FORMS
+
+-----------------------------------------*/
+
+@mixin square($dim) {
+  width: $dim;
+  height: $dim;
+}
+
+form {
+  margin: 0;
+}
+
+// Wrappers
+// --------------------
+.select-wrapper {
+  &:after {
+    font-family: FontAwesome;
+    content: '\f107';
+    position: absolute;
+    font-size: 2em;
+    right: 15px;
+    top: 6px;
+    color: inherit;
+
+    @media (max-width: $smallMediaSize) {
+      top: 11px;
+    }
+  }
+}
+
+// Inputs
+// --------------------
+
+/* new design: rounded corners and 2px border on all inputs */
+input, select, textarea, label:before {
+  border-radius: 4px;
+  border: 2px solid $gray;
+}
+
+.input, .select, .textarea {
+  -webkit-appearance: none;
+  width: 100%;
+  // border: 0;
+  // border-radius: 0;
+  font-size: inherit;
+
+  @include trans(opacity, 300ms);
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.input, .select {
+  height: 2em;
+  min-height:40px;
+  padding-left: 15px;
+}
+
+.select {
+  @include trans(background-color, 300ms);
+  //background: transparent url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat right 15px center;
+  cursor: pointer;
+}
+
+.textarea {
+  padding: 15px;
+  resize: none;
+}
+
+.hidden-input {
+  background: none;
+  border: 0;
+  transition: 0.5s;
+  color: inherit;
+
+  &::-webkit-input-placeholder {color: inherit; font-weight: 300;}
+  &:-moz-placeholder           {color: inherit; font-weight: 300;}
+  &::-moz-placeholder          {color: inherit; font-weight: 300;}
+  &:-ms-input-placeholder      {color: inherit; font-weight: 300;}
+
+  &:focus {
+    background: $light;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+    color: initial;
+
+    &::-webkit-input-placeholder {color: initial; font-weight: 300;}
+    &:-moz-placeholder           {color: initial; font-weight: 300;}
+    &::-moz-placeholder          {color: initial; font-weight: 300;}
+    &:-ms-input-placeholder      {color: initial; font-weight: 300;}
+  }
+}
+
+@each $item in $mainColors {
+  $name: nth($item, 1);
+  $bg: nth($item, 2);
+  $color: nth($item, 3);
+  $lighten: nth($item, 5);
+
+  .input-b-#{$name}, .select-b-#{$name} {
+
+    border: 1px solid $lighten;
+
+    &::-webkit-input-placeholder {color: $lighten; font-weight: 300;}
+    &:-moz-placeholder           {color: $lighten; font-weight: 300;}
+    &::-moz-placeholder          {color: $lighten; font-weight: 300;}
+    &:-ms-input-placeholder      {color: $lighten; font-weight: 300;}
+  }
+
+  .input-bottom-#{$name} {
+    // Extends
+    @extend %border-bottom-input;
+
+    border-bottom: 2px solid $lighten;
+
+    &::-webkit-input-placeholder {color: $lighten; font-weight: 300;}
+    &:-moz-placeholder           {color: $lighten; font-weight: 300;}
+    &::-moz-placeholder          {color: $lighten; font-weight: 300;}
+    &:-ms-input-placeholder      {color: $lighten; font-weight: 300;}
+
+    &:focus {border-bottom-color: $bg;}
+  }
+}
+
+.invalid {
+  border: 2px solid $decline !important; // Really needs this to be red
+  border-radius: 4px;
+}
+
+.invalid-shake {
+  border: 2px solid $decline !important; // Really needs this to be red
+  border-radius: 4px;
+  animation: shake 100ms 3 linear;
+}
+
+@keyframes shake {
+  0% { margin-left: 0px; }
+  50% { margin-left: 10px; }
+  100% { margin-left: 0px; }
+}
+
+.checkbox, .radio {
+  position: absolute; // take it out of document flow
+  opacity: 0; // hide it
+
+  & + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    width: 100%;
+    align-items: center;
+
+    // Extends
+    @extend %is-flex;
+  }
+
+  & + label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    background: #fff;
+    // border: 1px solid $stable_dark;
+    @include square(1.5em);
+    @include trans();
+  }
+
+  &:hover + label:before {
+    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0);
+  }
+
+  &:checked + label:before {
+    border-color: rgba(0, 0, 0, 0);
+  }
+
+  // Disabled state
+  &.disabled + label,
+  &[disabled] + label {
+    color: #b8b8b8;
+  }
+  &.disabled + label:before,
+  &[disabled] + label:before {
+    box-shadow: none;
+    background: #ddd;
+  }
+
+  // Checkmark. Could be replaced with an image
+  &:checked + label:after {
+    font-family: FontAwesome;
+    content: '\f00c';
+    position: absolute;
+    top: 0;
+    left: 0.24em;
+    line-height: 1.5em;
+    color: white;
+
+    @media (max-width: $smallMediaSize) {
+      left: 5px;
+    }
+  }
+}
+
+.radio {
+
+  & + label:before {
+    border-radius: 100%;
+  }
+
+  &:checked + label:after {
+    content: '';
+    top: 0.007em;
+    left: 0.33em;
+  }
+}
+
+@each $item in $mainColors {
+  .checkbox-#{nth($item, 1)} {
+    &:hover + label:before {
+      background: nth($item, 2);
+    }
+
+    &:checked + label:before {
+      background: nth($item, 2);
+    }
+  }
+
+  .radio-#{nth($item, 1)} {
+    &:hover + label:before {
+      background: nth($item, 2);
+    }
+
+    &:checked + label:before {
+      background: $light;
+      border-color: nth($item, 2);
+      border-width: 0.5em;
+
+      border: 1px solid $stable-dark;
+      background: radial-gradient(ellipse at center, nth($item, 2) 0%,nth($item, 2) 48%,rgba(255,255,255,1) 50%,rgba(255,255,255,1) 100%);
+    }
+  }
+}
+
+// facebook inputs
+.fb-bg {
+  input {
+    background-color: transparent;
+    color: $light;
+    &::placeholder {
+      color: darken($light, 20%);
+    }
+  }
+  .checkbox {
+    + label {
+      &:before {
+        background-color: transparent;
+        border: 2px solid $light;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+// moved here from login.component.scss:
+.username-wrapper {
+  position: relative;
+  width: 100%; // added
+
+  .username-input {
+    padding-left: 50px;
+  }
+
+  .pre-username {
+    position: absolute;
+    top: 0; left: 10px;
+
+    span {
+      line-height: 51px;
+    }
+  }
+}
