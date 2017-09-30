@@ -1,8 +1,8 @@
 /* --------------------
 
-KORDE TEXT STYLES
+MIMAS - TEXT STYLES
 
-Created by Valdemar Rolfsen 2016
+Created by Valdemar Rolfsen 2017
 
 -------------------- */
 
@@ -11,12 +11,12 @@ Created by Valdemar Rolfsen 2016
 
 @import "variables";
 
-h1 { font-size: 5em; }
-h2 { font-size: 4em; }
-h3 { font-size: 3em; }
-h4 { font-size: 2em; }
-h5 { font-size: 1.75em; }
-h6 { font-size: 1.25em; }
+h1 { font-size: 3em; }
+h2 { font-size: 2.5em; }
+h3 { font-size: 2em; }
+h4 { font-size: 1.75em; }
+h5 { font-size: 1.5em; }
+h6 { font-size: 1em; }
 
 h1, h2, h3, h4, h5, h6, p {
   margin: 0.1em 0;
@@ -24,13 +24,6 @@ h1, h2, h3, h4, h5, h6, p {
 
 // General paragraph style
 // -------------------
-p {
-  white-space: pre-line;
-}
-
-p.big {
-  font-size: 1.5em;
-}
 
 // Font weights
 // -------------------
@@ -56,6 +49,13 @@ p.big {
 
 .t-justify { text-align: justify; }
 
+// Text trasnformation
+// -------------------
+
+.t-upper {
+  text-transform: uppercase;
+}
+
 // Font sizes
 // -------------------
 
@@ -63,9 +63,4 @@ p.big {
   .fs-#{$i} {
      font-size: #{$i/10}em;
   }
-}
-
-// Other
-.t-upper {
-  text-transform: uppercase;
 }

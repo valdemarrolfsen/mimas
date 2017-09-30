@@ -1,0 +1,48 @@
+/*----------------------------------------
+
+  MIMAS - SIZES
+
+  Created by Valdemar Rolfsen 2017
+
+-----------------------------------------*/
+
+// Containers
+// -------------------
+.container.sm { width: 800px; }
+.container.md { width: 1200px; }
+.container.lg { width: 1400px; }
+
+// Padding and margins
+// -------------------
+
+@for $i from 0 to 11 {
+	// Margin
+	.m-#{$i} { margin: $i * 1em }
+	.m-t-#{$i} { margin-top: $i * 1em }
+	.m-b-#{$i} { margin-bottom: $i * 1em }
+	.m-r-#{$i} { margin-right: $i * 1em }
+	.m-l-#{$i} { margin-left: $i * 1em }
+	.m-h-#{$i} { 
+		margin-right: $i * 1em;
+		margin-right: $i * 1em
+	}
+	.m-v-#{$i} { 
+		margin-top: $i * 1em;
+		margin-bottom: $i * 1em
+	}
+
+	// Padding
+	.p-#{$i} { padding: $i * 1em }
+	.p-t-#{$i} { padding-top: $i * 1em }
+	.p-b-#{$i} { padding-bottom: $i * 1em }
+	.p-r-#{$i} { padding-right: $i * 1em }
+	.p-l-#{$i} { padding-left: $i * 1em }
+	.p-h-#{$i} { 
+		padding-right: $i * 1em;
+		padding-left: $i * 1em
+	}
+	.p-v-#{$i} { 
+		padding-top: $i * 1em;
+		padding-bottom: $i * 1em
+	}
+}

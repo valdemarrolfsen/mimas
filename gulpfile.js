@@ -6,6 +6,7 @@ var sourcemaps = require('gulp-sourcemaps');
 let cleanCSS = require('gulp-clean-css');
 var sass = require('gulp-sass');
 var concatCss = require('gulp-concat-css');
+var rename = require("gulp-rename");
 var del = require('del');
  
 var paths = {
@@ -44,9 +45,9 @@ gulp.task('images', function() {
 gulp.task('style', function() {
   return gulp.src(paths.scss)
     .pipe(sass().on('error', sass.logError))
-    .pipe(concatCss("bundle.min.css"))
     .pipe(cleanCSS({compatibility: 'ie8'}))
-    .pipe(gulp.dest('dist/css'));
+    .pipe(rename('bundle.min.css'))
+    .pipe(gulp.dest('dist/css/'));
 });
 
 gulp.task('index', function() {

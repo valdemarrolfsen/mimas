@@ -1,6 +1,8 @@
-  /*----------------------------------------
+/*----------------------------------------
 
-  KORDE - BUTTONS
+  MIMAS - BUTTONS
+
+  Created by Valdemar Rolfsen 2017
 
 -----------------------------------------*/
 
@@ -75,11 +77,21 @@
   // Small hack to remove forced space between buttons in some browsers
   font-size: 0;
 
+  // Extends
+  @extend %is-flex;
+  @extend %flex-row;
+
   .btn {
 
     border-radius: 0;
     margin-right: 0;
     margin-left: 0;
+
+    flex: 1;
+
+    @media (max-width: $smallMediaSize) { 
+      flex: none;
+    }
 
     // Restores the font-size after hack in parent class
     font-size: $defaultTextSize;
